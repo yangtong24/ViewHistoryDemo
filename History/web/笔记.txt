@@ -1,0 +1,45 @@
+request对象
+response对象
+session对象
+application对象
+page对象
+pageContext对象
+config对象
+exception对象
+
+    application对象实现了用户间的数据共享,可存放全局变量
+    application开始于服务器的启动,终止于服务器的关闭
+    在用户的前后连接或不同的用户之间的连接中,可以对application对象的同一属性进行操作
+请求重定向
+    客户端行为,response.sendRedirect(),本质是两次请求，前一次请求对象不会保存,地址栏的url会改变
+
+请求转发
+    服务器行为,request.getRequestDispatcher().forward(req,resp);是一次请求,转发后请求对象会保存
+    地址栏的url不会改变
+
+举个例子
+    重定向:A去B局办事，B局的人说:这事不归我们管,去C局，然后你就去了C局
+    转发:A去B局办事，B局的人说:这事不归我们管,C局管,B局让你等一会,联系了C局让他们办好后,送了过来
+
+session
+    生命周期
+        1.创建
+        2.活动
+        3.销毁
+    销毁:
+        a.调用了session.invalidate()方法
+        b.Session过期(超时)
+        c.服务器重新启动
+    tomcat默认的session超时时间为30分钟
+    设置session超时有两种方式
+    1.session.setMaxInactiveInterval()//单位是秒
+    2.<session-config>
+      <session-timeout>
+        10
+      </session-timeout>
+      </session-config>//单位是分钟
+
+
+Model1：jsp+javabean，其中jsp为表示层和控制层，javabean为模式层
+
+Model2：jsp+servlet+javabean，jsp为表示层，servlet为控制层，javabean为模式层
